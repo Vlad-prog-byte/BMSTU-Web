@@ -1,0 +1,23 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+
+        {% block head %}
+                <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        {% endblock head %}
+
+
+        {% block main_menu %}
+                <table>
+                        <tr>
+                                <th><img  class="channel" src="{% static 'img/'|add:user.photo.name %}" alt="something" width="200" height="200"</th>
+                                <th><h1>{{user.nickname}}</h1></th>
+                        </tr>
+                </table>
+                {% for i in video %}
+                    <ol>
+                        <li><a href={{i.href}}>i.name_video</a></li>
+                    </ol>
+
+                {% endfor %}
+        {% endblock main_menu %}

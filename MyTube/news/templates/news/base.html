@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyTube</title>
+    <link rel="shortcut icon" href="{% static 'img/i.webp' %}" type="image/webp">
+    {% block head %}
+    {% endblock head %}
+</head>
+<body>
+        {% block main_menu %}
+            {% for i in users %}
+                <ul>
+                    <li><a href="{% url 'channel' i.id %}">{{ i.nickname }} {{i.password}} {{i.pk}}</a></li>
+                </ul>
+            {% endfor %}
+        {% endblock main_menu %}
+</body>
+</html>
