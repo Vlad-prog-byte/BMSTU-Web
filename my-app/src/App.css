@@ -1,0 +1,8 @@
+.myTube{
+    display: grid;
+    width: 1200px;
+    margin: 0 auto;
+    grid-template-areas: "h h h" "n c c";
+    grid-template-columns: 1.2fr 10fr;
+    grid-template-rows: 0.1fr 10fr;
+}

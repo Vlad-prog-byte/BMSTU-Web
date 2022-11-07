@@ -1,0 +1,19 @@
+.mytubeNavbar{
+    display: block;
+    grid-area: n;
+    background-color: #00BFFF;
+}
+
+.mytubeNavbar .menu{
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+
+.href{
+    display: block;
+    color: black;
+    opacity: .8;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,16 @@
+.channels{
+    background-color: #E0FFFF;
+}
+
+.channel .picture{
+    display: inline-block;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.channel{
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-top: 10px;
+}
