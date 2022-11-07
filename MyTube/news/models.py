@@ -4,7 +4,7 @@ from django.db import models
 class User(models.Model):
     nickname = models.CharField(unique=True, max_length=100, verbose_name='Пользователь', blank=False, null=False)
     password = models.CharField(max_length=20, verbose_name='Пароль', blank=False, null=False)
-    photo = models.ImageField(verbose_name='Фото', default=None)
+    photo = models.CharField(max_length=5000, verbose_name='Фото', default=None)
 
     class Meta:
         verbose_name = 'Пользователя'
@@ -30,7 +30,8 @@ class Videos(models.Model):
 class Like_DisLikes(models.Model):
     likes = models.IntegerField(verbose_name='Лайки', default=0)
     dislikes = models.IntegerField(verbose_name='Дизлайки',  default=0)
-    video = models.ForeignKey('Videos', on_delete=models.CASCADE, verbose_name='Видео')
+    video = models.ForeignKey('Videos', on_delete=models.CASCADE)
+    userLike = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Лайки и Дизлайки'

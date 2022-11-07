@@ -6,7 +6,9 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = ('nickname',)
 
 class LikeDisLikesAdmin(admin.ModelAdmin):
-    list_display = ('likes', 'dislikes', 'video')
+    list_display = ('likes', 'dislikes', 'video', 'userLike')
+
+
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Videos)

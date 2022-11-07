@@ -6,11 +6,12 @@ from news.views import main_page
 
 from rest_framework import routers
 from news import views as news_views
+from news import views
 
-
-router = routers.DefaultRouter()
-router.register(r'news', news_views.UserViewSet)
-
+router = routers.SimpleRouter()
+router.register(r'api/video', views.VideoViewSet)
+router.register(r'api/users', views.UserViewSet)
+router.register(r'api/likesDislikes', views.Like_DisLikesViewSet)
 
 urlpatterns = [
     # path('', include(router.urls)),
@@ -18,8 +19,16 @@ urlpatterns = [
 
     path('', main_page, name='home'),
     path('admin/', admin.site.urls, name='admin'),
-    path('channel/', include('news.urls'))
+    path('channel/', include('news.urls')),
+    path('api/channel/<int:pk>/', views.ChannelView.as_view()),
+    # path('api/v1/user/', views.UserViewSet.as_view({'get': 'list'})),
+    # path('api/v1/userGet/<int:pk>', views.UserViewSet.as_view({'get': 'list'})),
+    # path('api/v1/userUpdate/<int:pk>/', views.UserViewSet.as_view({'put': 'update'})),
+    # path('api/v1/userCreate/<int:pk>/', views.UserViewSet.as_view({'post': 'create'}))
+
 ]
+urlpatterns += router.urls
+
 
 
 if settings.DEBUG:
