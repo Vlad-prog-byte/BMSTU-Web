@@ -1,29 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
 import './Navbar.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {ContextApp} from "../../App";
+import {Button} from "react-bootstrap";
 
 const Navbars = () => {
-
-    // let buttonSearch = document.querySelector('.search__button');
-    // buttonSearch.addEventListener('click', getData);
+    const {state, dispatch} = useContext(ContextApp);
     async function getData(event){
         event.preventDefault();
         let searchInput = document.querySelector('.search__input');
-        data = searchInput.value;
+        let data = searchInput.value;
         searchInput.value = '';
-        const response =  await fetch(`http://127.0.0.1:8000/api/search?request=${data}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    console.log(res);
-                },
-                (error) => {
-                    console.log('error');
-                }
-            )
+        if (data != '')
+            window.location.href=`http://localhost:3000/search/${data}`;
     }
 
 
@@ -40,6 +32,10 @@ const Navbars = () => {
                             <input type="text" placeholder="Искать здесь..." className="search__input"/>
                                 <button type="submit" className="search__button" onClick={getData}>Поиск</button>
                         </form>
+                        <Button onClick={() =>{
+                                        dispatch({type : 'SWITCH_ID', payload : {}});
+                                        console.log(state.id);}}>Смена
+                        </Button>
                     </Nav>
                 </Container>
             </Navbar>
