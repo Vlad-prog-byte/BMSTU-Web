@@ -2,15 +2,21 @@ import React, {useContext, useEffect, useState} from "react";
 import './Channels.css';
 import {BrowserRouter, Link, useParams} from "react-router-dom";
 import {ContextApp} from "../../App";
+import {Button, Card, Row} from "react-bootstrap";
+
 
 const Avatar = (props) => {
     return(
-      <div className="channel">
-          <Link to={`${props.id}/${props.nickname}`}>
-              <img className="picture" src={props.src} alt="Проблемы с БД"/>
-            {props.nickname}
-          </Link>
-      </div>
+        <Row xs={4} md={4} className="g-4" height={100} width={100}>
+            <Link to={`${props.id}/${props.nickname}`}>
+            <Card className="card">
+                <Card.Img className="cardImage" variant="top" src={props.src} height={150} width={100}  />
+                <Card.Body>
+                    <Button className="cardButton" href={`${props.id}/${props.nickname}`} target="_blank" variant="primary">{props.nickname} </Button>
+                </Card.Body>
+            </Card>
+            </Link>
+        </Row>
     );
 }
 
