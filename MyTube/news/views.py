@@ -2,6 +2,8 @@ import os
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, Http404
+from rest_framework.decorators import api_view
+
 from .models import *
 from rest_framework import viewsets
 from news.serializers import UserSerializer
@@ -10,19 +12,62 @@ from news.serializers import Like_DisLikesSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from django.db.models import Q
 
 
-class ChannelView(APIView):
+
+@api_view(['POST'])
+def likeDislikeDelete(request):
+    data = request.data
+
+    Like_DisLikes.objects.filter(video=data['video'], userLike=data['userLike']).delete()
+    return Response({'stutus' : 'deleted'})
+
+
+@api_view(['POST'])
+def likeDisLikes(request):
+    data = request.data
+    print(data)
+    try:
+        like = Like_DisLikes.objects.get(video=data['video'], userLike=data['userLike'])
+        like.likes = data['likes']
+        like.dislikes = data['dislikes']
+        like.save()
+        return Response({'ok':'ok'})
+    except:
+        new_like = Like_DisLikes()
+        new_like.likes = data['likes']
+        new_like.dislikes = data['dislikes']
+        new_like.userLike = User.objects.get(pk=data['userLike'])
+        new_like.video = Videos.objects.get(pk=data['video'])
+        new_like.save()
+        return Response({'ok':'ok'})
+
+
+@api_view(['GET'])
+def search(request):
+    searchData = request.GET.get('search')
+    videos = list(Videos.objects.filter(Q(name_video__icontains=searchData) | Q(title__icontains=searchData)).values())
+    return Response(videos)
+
+
+def getLikesDislikes(pk):
+    result = list(Like_DisLikes.objects.filter(video=pk).values_list('likes', 'dislikes'))
+    likes = sum([x[0] for x in result])
+    dislike = sum([x[1] for x in result])
+    spisok = {'likes': likes, 'dislikes': dislike}
+    return spisok
+
+
+class VideosChannelView(APIView):
     def get(self, request, pk):
-        result = list()
-        for i in list(Videos.objects.filter(user=pk)):
-            result.append(
-                {
-                    "name": i.name_video,
-                    "href": i.href
-                }
-            )
-        return Response({"videoNames" : result})
+        # id канала
+
+        results = list(Videos.objects.filter(user=pk).values())
+        for i in results:
+            i.update(getLikesDislikes(i['id']))
+        return Response(results)
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -39,42 +84,3 @@ class Like_DisLikesViewSet(viewsets.ModelViewSet):
     # queryset всех пользователей для фильтрации по дате последнего изменения
     queryset = Like_DisLikes.objects.all()
     serializer_class = Like_DisLikesSerializer  # Сериализатор для модели
-
-def page_user(request, nick_id):
-    print('TESTTTTTTTTTTT')
-    print(nick_id)
-    info = User.objects.get(id=nick_id)
-    video = Videos.objects.filter(user=nick_id)
-    print(video)
-    context = {'user': info, 'video': video}
-    print(info.photo)
-    return render(request, "news/channel.html", context=context)
-
-
-def main_page(request):
-    users = User.objects.all()
-    context = {'users': users}
-    print(users[0].nickname, users[0].pk)
-    return render(request, 'news/base.html', context=context)
-
-#
-#
-# def person_page(request, nick):
-#     if nick not in [i.nickname for i in User.objects.all()]:
-#         print(nick)
-#         print(User.objects.all())
-#         return HttpResponse("<h1>Данного пользователя не существует</h1>")
-#     else:
-#         path = "news/static/img" + "/" + nick
-#         files = []
-#         for i in os.listdir(path):
-#             files.append('img/' + nick + '/' + i)
-#         context = {'nick' : nick, 'files' : files}
-#         return render(request, "news/person.html", context)
-#
-#
-# def archive(request, year):
-#     if (int(year) > 2020):
-#         raise Http404()
-#
-#     return HttpResponse(f"<h1>Архив по годам</h1>{year}</p>")

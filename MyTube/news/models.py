@@ -39,3 +39,4 @@ class Like_DisLikes(models.Model):
 
     def __str__(self):
         return f' Лайки : {self.likes}\t Дизлайки : {self.dislikes}'
+
