@@ -7,13 +7,12 @@ import {Button, Card, Row} from "react-bootstrap";
 
 const Avatar = (props) => {
     return(
-        <Row xs={4} md={4} className="g-4" height={100} width={100}>
+        <Row xs={4} md={4} className="g-4" width={300} height={300}>
             <Link to={`${props.id}/${props.nickname}`}>
             <Card className="card">
-                <Card.Img className="cardImage" variant="top" src={props.src} height={150} width={100}  />
-                <Card.Body>
-                    <Button className="cardButton" href={`${props.id}/${props.nickname}`} target="_blank" variant="primary">{props.nickname} </Button>
-                </Card.Body>
+                <img className="channels_picture" src={props.src}/>
+                {/*<Card.Img className="cardImage" variant="top" src={props.src}/>*/}
+                <Button className="cardButton" href={`${props.id}/${props.nickname}`} target="_blank" variant="primary">{props.nickname} </Button>
             </Card>
             </Link>
         </Row>

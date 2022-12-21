@@ -9,8 +9,8 @@
 }
 
 .search{
-    display: inline-block;
-    margin-right: 398px;
+    display: flex;
+    margin-right: 10%;
 }
 
 .myChannel{
@@ -31,9 +31,9 @@
 
 .logoPicture{
     display: inline-block;
-    height : 60px;
-    width : 60px;
-    margin-right : 320px;
+    height : 20%;
+    width : 20%;
+    margin-right : 20%;
 }
 
 .authorization{
@@ -42,6 +42,6 @@
 
 .authorization .picture{
     display: inline;
-    height: 60px;
-    width: 60px;
+    height: 20%;
+    width: 20%;
 }

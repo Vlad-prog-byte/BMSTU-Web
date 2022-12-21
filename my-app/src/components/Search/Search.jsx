@@ -32,6 +32,7 @@ const Search = ()=>{
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log("search")
                     dispatch({type: 'Search', payload: result});
                 },
                 (error) => {

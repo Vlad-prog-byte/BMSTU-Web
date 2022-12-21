@@ -1,3 +1,16 @@
+.g-4{
+    margin-bottom: 10px;
+}
+
+.channels_picture{
+    width: 300px;
+    height: 200px;
+}
+
+.cardButton{
+    width: 300px;
+    text-decoration: none;
+}
 .channels{
     background-color: #E0FFFF;
 }
@@ -5,12 +18,24 @@
 .channel .picture{
     display: inline-block;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 40vw;
+    height: 40vh;
 }
 
 .channel{
     padding-bottom: 30px;
     padding-left: 40px;
     padding-top: 10px;
+}
+
+@media screen and (max-width: 1000px){
+    .channels_picture{
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .cardButton{
+        width: 100vw;
+        text-decoration: none;
+    }
 }

@@ -17,7 +17,8 @@ const initialState = {
     error : '',
     items : [],
     search : [],
-    id: -1
+    id: -1,
+    channel : []
 }
 
 
@@ -47,6 +48,11 @@ const reducer = (state, action) => {
                     ...state,
                     id : state.id == -1 ? 9 : -1
                 }
+        case 'CHANNEL':
+                return {
+                    ...state,
+                    channel: action.payload
+                }
     }
 }
 
@@ -66,7 +72,7 @@ function App() {
                     dispatch({type: 'FETCH_ERROR', error: error})
                 }
             )
-    })
+    }, [])
 
 
     let flag = false;

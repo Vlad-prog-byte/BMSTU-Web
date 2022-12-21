@@ -6,9 +6,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app/src/components/Channel/Channel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/src/components/Channel/Channel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app/src/components/Search/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/src/components/Search/Search.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/vlad/PYTHON_PRACTICE/DjAnGo_L/mysite/BMSTU-Web/MyTube&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/vlad/FRONT_END/MyTube/BMSTU-Web/MyTube&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -98,6 +100,8 @@
       <workItem from="1670164339522" duration="5643000" />
       <workItem from="1670177723624" duration="3327000" />
       <workItem from="1670225567096" duration="4339000" />
+      <workItem from="1671395948677" duration="1708000" />
+      <workItem from="1671401422435" duration="3746000" />
     </task>
     <servers />
   </component>
